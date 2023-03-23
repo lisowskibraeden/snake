@@ -28,14 +28,19 @@ class SnakeGame:
         self.board = [([0] * BOARD_X_COUNT) for _ in range(BOARD_Y_COUNT)]
         self.game_over = False
         self.score = 0
-        self.character = [[randint(0, BOARD_X_COUNT - 1), randint(1, BOARD_Y_COUNT - 1)]]
+        self.characters = [[[randint(0, BOARD_X_COUNT - 1), randint(1, BOARD_Y_COUNT - 1)]]]
         self.cherry = [randint(0, BOARD_X_COUNT - 1), randint(0, BOARD_Y_COUNT - 1)]
         self.ticking = False
-        self.direction = 0
+        self.directions = [0, 0]
         self.runningGame = threading.Thread(target=self.tick)
         self.growing = False
         self.spawn_init()
     
+    def add_characther(self): 
+        self.characters.append([randint(0, BOARD_X_COUNT - 1), randint(1, BOARD_Y_COUNT - 1)])
+        self.directions.append(0)
+
+
     def tick(self):
         while self.ticking and not self.game_over:
             copy = [self.character[0][0], self.character[0][1]]
