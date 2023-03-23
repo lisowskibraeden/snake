@@ -1,0 +1,1 @@
+Plays the game of Snake. Implemented in PyGame. 
